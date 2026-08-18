@@ -1,4 +1,52 @@
 // =========================
+// OPEN INVITATION
+// =========================
+
+const openInvitationButton =
+  document.getElementById("openInvitation");
+
+const cover =
+  document.getElementById("cover");
+
+const invitationContent =
+  document.getElementById("invitationContent");
+
+
+// lock scroll masa mula buka website
+document.body.classList.add("invitation-locked");
+
+
+openInvitationButton.addEventListener("click", () => {
+
+  // animate button
+  openInvitationButton.classList.add("button-opening");
+
+  // animate cover
+  cover.classList.add("cover-opening");
+
+
+  setTimeout(() => {
+
+    // hide cover completely
+    cover.style.display = "none";
+
+    // show invitation content
+    invitationContent.classList.remove("invitation-hidden");
+    invitationContent.classList.add("invitation-reveal");
+
+    // allow scrolling
+    document.body.classList.remove("invitation-locked");
+
+    // start exactly at Screen 2
+    window.scrollTo({
+      top: 0,
+      behavior: "instant"
+    });
+
+  }, 800);
+
+});
+// =========================
 // WEDDING COUNTDOWN
 // =========================
 
