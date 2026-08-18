@@ -1,4 +1,3 @@
-alert("script connected");
 // =========================
 // WEDDING COUNTDOWN
 // =========================
