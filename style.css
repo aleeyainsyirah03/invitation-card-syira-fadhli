@@ -467,20 +467,18 @@ input {
 .main-couple-name {
   font-family: 'Cormorant Garamond', serif;
 
-  font-size: clamp(34px, 8vw, 48px);
-  font-weight: 400;
+  font-size: 22px;
+  font-weight: 500;
+
+  line-height: 1.6;
 
   letter-spacing: 2px;
-  line-height: 1.08;
 
-  color: #7898b2;
+  color: #6687a3;
 
-  margin: 18px auto 26px;
+  margin: 18px auto 28px;
 
   max-width: 390px;
-
-  word-break: normal;
-  overflow-wrap: normal;
 }
 
 .main-couple-name span {
