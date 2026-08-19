@@ -486,16 +486,15 @@ input {
 
   font-family: 'Great Vibes', cursive;
 
-  font-size: 27px;
+  font-size: 24px;
 
   letter-spacing: 0;
   line-height: 1.2;
 
-  margin: 10px 0;
+  margin: 8px 0;
 
   color: #7b9bb6;
 }
-
 .child-text {
   font-size: 16px;
 
