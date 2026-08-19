@@ -1468,23 +1468,17 @@ body.invitation-locked {
 
   color: #9aa8b2;
 }
-/* ==================================================
-   BOTTOM NAVIGATION — FIX
-================================================== */
+/* =========================
+   FIXED BOTTOM NAV — FINAL
+========================= */
 
 .bottom-nav {
-  background: #ffffff !important;
+  position: fixed !important;
 
-  border: 1px solid #d8e6f0;
+  left: 50% !important;
+  bottom: calc(12px + env(safe-area-inset-bottom)) !important;
 
-  box-shadow:
-    0 10px 30px rgba(91, 121, 145, 0.10);
-
-  opacity: 1 !important;
-
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}
+  transform: translateX(-50%) !important;
 
   width: calc(100% - 28px) !important;
   max-width: 430px !important;
@@ -1493,50 +1487,47 @@ body.invitation-locked {
   grid-template-columns: repeat(5, 1fr) !important;
   align-items: center !important;
 
-  padding: 8px 5px !important;
-background: #ffffff;
-  border: 1px solid rgba(126, 164, 195, 0.25) !important;
+  margin: 0 !important;
+  padding: 8px 6px !important;
+
+  background: #ffffff !important;
+
+  border: 1px solid #d8e6f0 !important;
   border-radius: 18px !important;
 
-  box-shadow: 0 8px 30px rgba(70, 100, 125, 0.13) !important;
+  box-shadow:
+    0 10px 30px rgba(76, 108, 133, 0.12) !important;
 
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-
-  z-index: 999 !important;
+  z-index: 9999 !important;
 }
-
 
 .bottom-nav .nav-item {
   appearance: none !important;
   -webkit-appearance: none !important;
 
-  border: 0 !important;
-  outline: 0 !important;
-
-  background: transparent !important;
-
-  margin: 0 !important;
-  padding: 5px 2px !important;
-
-  min-width: 0 !important;
-  min-height: 46px !important;
-
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
+
   gap: 4px !important;
+
+  min-width: 0 !important;
+  min-height: 46px !important;
+
+  margin: 0 !important;
+  padding: 4px 2px !important;
+
+  border: 0 !important;
+
+  background: transparent !important;
 
   text-decoration: none !important;
 
   color: #7898b2 !important;
 
-  font-family: "Montserrat", sans-serif !important;
-
   cursor: pointer;
 }
-
 
 .bottom-nav .nav-item span {
   display: block !important;
@@ -1547,30 +1538,25 @@ background: #ffffff;
   color: #7898b2 !important;
 }
 
-
 .bottom-nav .nav-item small {
   display: block !important;
 
   font-family: "Montserrat", sans-serif !important;
 
   font-size: 7px !important;
-  font-weight: 400 !important;
 
-  line-height: 1 !important;
-
-  letter-spacing: 0.7px !important;
+  letter-spacing: 0.8px !important;
 
   color: #7898b2 !important;
 }
 
-
+.bottom-nav .nav-item:link,
 .bottom-nav .nav-item:visited,
 .bottom-nav .nav-item:hover,
 .bottom-nav .nav-item:active {
-  color: #7898b2 !important;
   text-decoration: none !important;
+  color: #7898b2 !important;
 }
-
 
 /* ==================================================
    CONTACT OVERLAY
