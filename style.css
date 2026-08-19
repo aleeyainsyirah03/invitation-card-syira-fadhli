@@ -1024,3 +1024,6 @@ body.invitation-locked {
     transform: translateY(7px);
   }
 }
+.floral {
+  display: none;
+}
