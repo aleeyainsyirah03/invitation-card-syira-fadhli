@@ -1041,3 +1041,19 @@ body.invitation-locked {
 
   text-align: center;
 }
+.details-screen {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+
+  padding: 80px 0;
+
+  background: #f4f9fd;
+}
