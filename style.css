@@ -2221,3 +2221,12 @@ body {
   }
 
 }
+/* FORCE RSVP SUCCESS HIDDEN UNTIL SUBMIT */
+
+#rsvpSuccess {
+  display: none !important;
+}
+
+#rsvpSuccess.active {
+  display: block !important;
+}
