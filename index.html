@@ -752,3 +752,124 @@
 </body>
 
 </html>
+<!-- =========================================
+     SCREEN 5 — RSVP
+========================================== -->
+
+<section
+  id="rsvpSection"
+  class="screen rsvp-screen"
+>
+
+  <div class="section-content rsvp-content">
+
+    <div class="mini-monogram">
+      S <span>&</span> F
+    </div>
+
+    <p class="small-title">
+      RSVP
+    </p>
+
+    <h2 class="rsvp-title">
+      ADAKAH ANDA AKAN HADIR?
+    </h2>
+
+    <div class="rsvp-choice">
+
+      <button
+        type="button"
+        class="rsvp-option"
+        data-status="hadir"
+      >
+        HADIR
+      </button>
+
+      <button
+        type="button"
+        class="rsvp-option"
+        data-status="tidak-hadir"
+      >
+        TIDAK HADIR
+      </button>
+
+    </div>
+
+    <form id="rsvpForm" class="rsvp-form">
+
+      <div class="form-group">
+
+        <label for="guestName">
+          NAMA TETAMU
+        </label>
+
+        <input
+          type="text"
+          id="guestName"
+          name="guestName"
+          placeholder="Masukkan nama anda"
+          required
+        >
+
+      </div>
+
+      <div
+        class="form-group pax-group"
+        id="paxGroup"
+      >
+
+        <label>
+          BILANGAN PAX
+        </label>
+
+        <div class="pax-control">
+
+          <button
+            type="button"
+            id="minusPax"
+          >
+            −
+          </button>
+
+          <span id="paxCount">
+            1
+          </span>
+
+          <button
+            type="button"
+            id="plusPax"
+          >
+            +
+          </button>
+
+        </div>
+
+      </div>
+
+      <button
+        type="submit"
+        class="primary-btn rsvp-submit"
+      >
+        SUBMIT
+      </button>
+
+    </form>
+
+    <div
+      id="rsvpSuccess"
+      class="rsvp-success"
+    >
+
+      <h3>
+        Terima kasih ♡
+      </h3>
+
+      <p>
+        RSVP anda telah diterima.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
