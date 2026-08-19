@@ -133,3 +133,31 @@ addCalendarButton.addEventListener("click", () => {
 
   window.open(calendarURL, "_blank");
 });
+// =========================
+// SCROLL REVEAL
+// =========================
+
+const revealElements =
+  document.querySelectorAll(".reveal");
+
+const revealObserver =
+  new IntersectionObserver(
+    (entries) => {
+
+      entries.forEach((entry) => {
+
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+        }
+
+      });
+
+    },
+    {
+      threshold: 0.15
+    }
+  );
+
+revealElements.forEach((element) => {
+  revealObserver.observe(element);
+});
