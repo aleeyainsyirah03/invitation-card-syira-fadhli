@@ -2427,3 +2427,18 @@ body {
 
   cursor: pointer;
 }
+/* =========================
+   SPACE FOR FIXED BOTTOM NAV
+========================= */
+
+.screen {
+  padding-bottom: 150px !important;
+}
+
+.details-screen,
+.rsvp-screen,
+.gallery-screen,
+.countdown-screen,
+.invitation-screen {
+  padding-bottom: 150px !important;
+}
