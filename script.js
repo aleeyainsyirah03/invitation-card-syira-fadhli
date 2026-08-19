@@ -187,3 +187,46 @@ document.querySelectorAll('.bottom-nav a[href^="#"]').forEach(link => {
   });
 
 });
+// =========================
+// CONTACT BOTTOM SHEET
+// =========================
+
+const openContact =
+  document.getElementById("openContact");
+
+const closeContact =
+  document.getElementById("closeContact");
+
+const contactOverlay =
+  document.getElementById("contactOverlay");
+
+
+openContact.addEventListener("click", () => {
+
+  contactOverlay.classList.add("active");
+
+  document.body.style.overflow = "hidden";
+
+});
+
+
+closeContact.addEventListener("click", () => {
+
+  contactOverlay.classList.remove("active");
+
+  document.body.style.overflow = "";
+
+});
+
+
+contactOverlay.addEventListener("click", (event) => {
+
+  if (event.target === contactOverlay) {
+
+    contactOverlay.classList.remove("active");
+
+    document.body.style.overflow = "";
+
+  }
+
+});
