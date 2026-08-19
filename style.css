@@ -12,11 +12,34 @@ html {
   scroll-behavior: smooth;
 }
 
+:root {
+  --blue: #7fa3c2;
+  --blue-dark: #58758f;
+  --blue-soft: #dcebf6;
+  --blue-lighter: #f3f8fc;
+  --text: #546777;
+  --line: rgba(126, 164, 195, 0.36);
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
-  background: #ffffff;
-  color: #566c7f;
+  background: #eef5fa;
+  color: var(--text);
   overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      rgba(231, 241, 248, 0.65),
+      rgba(244, 248, 251, 0.75)
+    );
+
+  z-index: -1;
 }
 
 button,
@@ -29,19 +52,13 @@ input {
    GLOBAL
 ========================= */
 
-:root {
-  --blue: #7fa3c2;
-  --blue-dark: #58758f;
-  --blue-soft: #dcebf6;
-  --blue-lighter: #f3f8fc;
-  --text: #546777;
-  --line: rgba(126, 164, 195, 0.36);
-}
-
 .screen {
   position: relative;
-  width: 100%;
+
+  width: min(100%, 480px);
   min-height: 100svh;
+
+  margin: 0 auto;
 
   display: flex;
   justify-content: center;
@@ -50,6 +67,11 @@ input {
   overflow: hidden;
 
   padding: 60px 24px;
+
+  background-color: #ffffff;
+
+  box-shadow:
+    0 0 60px rgba(82, 114, 139, 0.08);
 }
 
 .section-content {
@@ -145,7 +167,25 @@ input {
 
 
 /* =========================
-   SCREEN 1
+   MOBILE E-CARD FRAME
+========================= */
+
+.cover-screen,
+.invitation-screen,
+.countdown-screen,
+.details-screen {
+  width: min(100%, 480px);
+  margin: 0 auto;
+
+  box-shadow:
+    0 0 60px rgba(82, 114, 139, 0.08);
+
+  background-color: #ffffff;
+}
+
+
+/* =========================
+   SCREEN 1 — COVER
 ========================= */
 
 .cover-screen {
@@ -163,6 +203,16 @@ input {
     #ffffff;
 
   min-height: 100svh;
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cover-screen.cover-opening {
+  opacity: 0;
+  transform: translateY(-35px) scale(1.015);
+  pointer-events: none;
 }
 
 .cover-frame {
@@ -323,8 +373,17 @@ input {
   margin-top: 22px;
 }
 
+#openInvitation {
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
 
-/* floral screen 1 */
+#openInvitation.button-opening {
+  opacity: 0;
+  transform: translateY(-8px);
+}
 
 .floral-top {
   width: min(52vw, 410px);
@@ -342,7 +401,40 @@ input {
 
 
 /* =========================
-   SCREEN 2
+   OPEN INVITATION UX
+========================= */
+
+body.invitation-locked {
+  overflow: hidden;
+}
+
+#invitationContent.invitation-hidden {
+  display: none;
+}
+
+#invitationContent.invitation-reveal {
+  display: block;
+
+  animation: invitationReveal 1s ease forwards;
+}
+
+@keyframes invitationReveal {
+
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+/* =========================
+   SCREEN 2 — JEMPUTAN
 ========================= */
 
 .invitation-screen {
@@ -495,18 +587,21 @@ input {
 
   color: #7b9bb6;
 }
+
 .child-text {
   font-size: 16px;
 
   line-height: 1.7;
 
   letter-spacing: 1px;
+
+  margin-top: 6px;
 }
 
 .closing-invite {
   max-width: 430px;
 
-  margin: 0 auto;
+  margin: 18px auto 0;
 
   font-size: 16px;
   font-style: italic;
@@ -534,7 +629,7 @@ input {
 
 
 /* =========================
-   SCREEN 3
+   SCREEN 3 — COUNTDOWN
 ========================= */
 
 .countdown-screen {
@@ -691,65 +786,285 @@ input {
 
 
 /* =========================
+   SCREEN 4 — DETAILS
+========================= */
+
+.details-screen {
+  position: relative;
+
+  width: min(100%, 480px);
+  min-height: 100svh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+
+  padding: 80px 0;
+
+  background:
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(220, 236, 248, 0.45),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 10% 90%,
+      rgba(214, 232, 245, 0.42),
+      transparent 34%
+    ),
+    #ffffff;
+}
+
+.details-content {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 520px;
+
+  margin: 0 auto;
+
+  padding: 40px 24px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+.details-screen .mini-monogram {
+  margin-bottom: 34px;
+}
+
+.details-screen .small-title {
+  margin-bottom: 18px;
+}
+
+.details-title {
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 31px;
+  font-weight: 500;
+
+  letter-spacing: 3px;
+
+  color: #6f91ad;
+
+  margin: 0 0 10px;
+}
+
+.details-card {
+  width: 100%;
+
+  margin-top: 10px;
+
+  background: rgba(255, 255, 255, 0.84);
+
+  border: 1px solid rgba(127, 163, 194, 0.28);
+
+  border-radius: 18px;
+
+  padding: 26px 20px;
+
+  box-shadow:
+    0 18px 45px rgba(81, 113, 138, 0.08);
+
+  backdrop-filter: blur(8px);
+}
+
+.detail-item {
+  width: 100%;
+
+  padding: 18px 0;
+
+  border-bottom: 1px solid rgba(126, 164, 195, 0.16);
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  display: block;
+
+  font-family: 'Montserrat', sans-serif;
+
+  font-size: 9px;
+  font-weight: 500;
+
+  letter-spacing: 3px;
+
+  color: #8ba4b8;
+
+  margin-bottom: 8px;
+}
+
+.detail-item strong {
+  display: block;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 21px;
+  font-weight: 500;
+
+  color: #5f7d96;
+}
+
+.detail-item p {
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 17px;
+
+  line-height: 1.7;
+
+  color: #556775;
+
+  margin: 0;
+}
+
+.location-buttons {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 12px;
+
+  margin-top: 28px;
+}
+
+.location-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 50px;
+
+  text-decoration: none;
+
+  padding: 14px 12px;
+
+  border: 1px solid rgba(116, 158, 191, 0.38);
+
+  border-radius: 6px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(222, 238, 249, 0.96),
+      rgba(202, 225, 243, 0.96)
+    );
+
+  color: #58778f;
+
+  font-family: 'Montserrat', sans-serif;
+
+  font-size: 10px;
+  font-weight: 500;
+
+  letter-spacing: 2px;
+
+  box-shadow:
+    0 8px 22px rgba(86, 121, 148, 0.08);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.location-btn:active {
+  transform: scale(0.97);
+}
+
+.details-screen .ornament-line {
+  margin: 22px auto;
+}
+
+
+/* =========================
    SCROLL INDICATOR
 ========================= */
 
 .scroll-indicator {
-  margin-top: 60px;
+  width: 100%;
+
+  margin-top: 45px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
 
   color: #7c9ab2;
 }
 
 .scroll-indicator span {
-  display: block;
-
-  width: 20px;
-  height: 34px;
-
-  border: 1px solid #7898b2;
-
-  border-radius: 15px;
-
-  margin: 0 auto 12px;
-
-  position: relative;
-}
-
-.scroll-indicator span::after {
-  content: '';
-
-  position: absolute;
-
-  width: 2px;
-  height: 7px;
-
-  background: #7898b2;
-
-  left: 50%;
-  top: 7px;
-
-  transform: translateX(-50%);
-
-  border-radius: 2px;
+  display: none;
 }
 
 .scroll-indicator p {
+  margin: 0;
+
   font-family: 'Cormorant Garamond', serif;
 
   font-size: 11px;
 
   letter-spacing: 2px;
+
+  color: #7c9ab2;
 }
 
 .arrow-down {
-  margin-top: 5px;
+  margin-top: 10px;
 
   font-size: 22px;
+
+  color: #7c9ab2;
+
+  animation: scrollBounce 1.8s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(7px);
+  }
+
 }
 
 
 /* =========================
-   MUSIC
+   SCROLL REVEAL
+========================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* =========================
+   MUSIC BUTTON
+   belum aktif lagi
 ========================= */
 
 .music-toggle {
@@ -777,6 +1092,17 @@ input {
   backdrop-filter: blur(8px);
 
   cursor: pointer;
+}
+
+
+/* =========================
+   FLORAL TEMPORARY HIDE
+   buang section ni nanti
+   bila floral images dah ready
+========================= */
+
+.floral {
+  display: none;
 }
 
 
@@ -827,38 +1153,16 @@ input {
     font-size: 44px;
   }
 
-  .floral-top {
-    width: 75vw;
-
-    right: -55px;
-  }
-
-  .floral-bottom {
-    width: 82vw;
-
-    left: -70px;
-  }
-
-  .invitation-floral-top,
-  .countdown-floral-top {
-    width: 70vw;
-
-    left: -90px;
-  }
-
-  .invitation-floral-bottom,
-  .countdown-floral-bottom {
-    width: 70vw;
-
-    right: -90px;
-  }
-
   .bismillah {
     font-size: 27px;
   }
 
   .parents-name {
-    font-size: 19px;
+    font-size: 22px;
+  }
+
+  .main-couple-name {
+    font-size: 22px;
   }
 
   .countdown {
@@ -871,7 +1175,6 @@ input {
 
   .countdown-item small {
     font-size: 9px;
-
     letter-spacing: 1.5px;
   }
 
@@ -879,181 +1182,48 @@ input {
     min-width: 220px;
   }
 
+  .details-screen {
+    padding: 60px 0;
+  }
+
+  .details-content {
+    padding: 30px 22px;
+  }
+
+  .details-title {
+    font-size: 28px;
+  }
+
+  .details-card {
+    padding: 22px 18px;
+  }
+
+  .detail-item strong {
+    font-size: 20px;
+  }
+
+  .detail-item p {
+    font-size: 16px;
+  }
+
+  .location-buttons {
+    grid-template-columns: 1fr;
+  }
+
 }
+
+
 /* =========================
-   MOBILE E-CARD FRAME
+   DESKTOP
 ========================= */
-
-body {
-  background: #eef5fa;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-
-  background:
-    linear-gradient(
-      rgba(231, 241, 248, 0.65),
-      rgba(244, 248, 251, 0.75)
-    );
-
-  z-index: -1;
-}
-
-.cover-screen,
-.invitation-screen,
-.countdown-screen {
-  width: min(100%, 480px);
-  margin: 0 auto;
-
-  box-shadow:
-    0 0 60px rgba(82, 114, 139, 0.08);
-
-  background-color: #ffffff;
-}
 
 @media (min-width: 481px) {
 
   .cover-screen,
   .invitation-screen,
-  .countdown-screen {
+  .countdown-screen,
+  .details-screen {
     min-height: 100vh;
   }
 
-}
-/* =========================
-   UX — OPEN INVITATION
-========================= */
-
-/* sebelum tetamu tekan Buka Jemputan */
-
-body.invitation-locked {
-  overflow: hidden;
-}
-
-#invitationContent.invitation-hidden {
-  display: none;
-}
-
-
-/* cover transition */
-
-.cover-screen {
-  transition:
-    opacity 0.8s ease,
-    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.cover-screen.cover-opening {
-  opacity: 0;
-  transform: translateY(-35px) scale(1.015);
-  pointer-events: none;
-}
-
-
-/* button */
-
-#openInvitation {
-  transition:
-    opacity 0.35s ease,
-    transform 0.35s ease,
-    box-shadow 0.35s ease;
-}
-
-#openInvitation.button-opening {
-  opacity: 0;
-  transform: translateY(-8px);
-}
-
-
-/* screen 2 reveal */
-
-#invitationContent.invitation-reveal {
-  display: block;
-
-  animation: invitationReveal 1s ease forwards;
-}
-
-@keyframes invitationReveal {
-
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-}
-/* =========================
-   UX — SCROLL REVEAL
-========================= */
-
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-
-  transition:
-    opacity 0.8s ease,
-    transform 0.8s ease;
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-.scroll-indicator .arrow-down {
-  font-size: 22px;
-  margin-top: 10px;
-  animation: scrollBounce 1.8s ease-in-out infinite;
-}
-
-@keyframes scrollBounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(7px);
-  }
-}
-.floral {
-  display: none;
-}
-.details-content {
-  position: relative;
-  z-index: 2;
-
-  width: 100%;
-  max-width: 520px;
-
-  margin: 0 auto;
-
-  padding: 40px 24px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  text-align: center;
-}
-.details-screen {
-  position: relative;
-
-  width: 100%;
-  min-height: 100vh;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  overflow: hidden;
-
-  padding: 80px 0;
-
-  background: #f4f9fd;
 }
