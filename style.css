@@ -1488,7 +1488,7 @@ body.invitation-locked {
   align-items: center !important;
 
   padding: 8px 5px !important;
-
+background: #ffffff;
   border: 1px solid rgba(126, 164, 195, 0.25) !important;
   border-radius: 18px !important;
 
