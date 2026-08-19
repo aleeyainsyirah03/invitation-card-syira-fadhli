@@ -1862,10 +1862,23 @@ body {
   padding-bottom: 85px;
 }
 /* =========================
-   RSVP
+   RSVP — FIXED
 ========================= */
 
 .rsvp-screen {
+  position: relative;
+
+  width: min(100%, 480px);
+  min-height: 100svh;
+
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 90px 22px 120px;
+
   background:
     radial-gradient(
       circle at 15% 10%,
@@ -1878,65 +1891,88 @@ body {
       transparent 34%
     ),
     #ffffff;
-
-  padding-top: 80px;
-  padding-bottom: 110px;
 }
 
 .rsvp-content {
-  max-width: 520px;
+  width: 100%;
+  max-width: 420px;
+
+  text-align: center;
+}
+
+.rsvp-content .mini-monogram {
+  margin-bottom: 34px;
+}
+
+.rsvp-content .small-title {
+  margin-bottom: 18px;
 }
 
 .rsvp-title {
-  font-family: 'Cormorant Garamond', serif;
+  margin: 0 auto 30px;
 
-  font-size: 30px;
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 28px;
   font-weight: 500;
+
+  line-height: 1.2;
 
   letter-spacing: 2px;
 
   color: #6d8da7;
-
-  margin: 24px 0 28px;
 }
 
+
+/* HADIR / TIDAK HADIR */
+
 .rsvp-choice {
+  width: 100%;
+
   display: grid;
   grid-template-columns: 1fr 1fr;
 
   gap: 12px;
 
-  margin-bottom: 28px;
+  margin-bottom: 26px;
 }
 
 .rsvp-option {
+  appearance: none;
+  -webkit-appearance: none;
+
   min-height: 54px;
+
+  padding: 0 12px;
 
   border: 1px solid rgba(116, 158, 191, 0.35);
 
   border-radius: 10px;
 
-  background: rgba(255,255,255,0.92);
+  background: rgba(255, 255, 255, 0.95);
 
   color: #65839a;
 
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 
   font-size: 10px;
   font-weight: 500;
 
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
 
   cursor: pointer;
 
   transition:
     background 0.25s ease,
-    color 0.25s ease,
-    transform 0.25s ease;
+    border-color 0.25s ease,
+    transform 0.2s ease;
 }
 
 .rsvp-option.active {
   background: #dcebf6;
+
+  border-color: #aac7dc;
+
   color: #4f7089;
 }
 
@@ -1944,21 +1980,26 @@ body {
   transform: scale(0.97);
 }
 
+
+/* FORM */
+
 .rsvp-form {
   display: none;
 
   width: 100%;
 
+  margin-top: 4px;
+
   padding: 24px 20px;
 
-  background: rgba(255,255,255,0.88);
+  background: rgba(255, 255, 255, 0.92);
 
-  border: 1px solid rgba(126,164,195,0.22);
+  border: 1px solid rgba(126, 164, 195, 0.22);
 
   border-radius: 16px;
 
   box-shadow:
-    0 12px 35px rgba(80,112,137,0.08);
+    0 12px 35px rgba(80, 112, 137, 0.08);
 }
 
 .rsvp-form.active {
@@ -1966,9 +2007,11 @@ body {
 }
 
 .form-group {
-  text-align: left;
+  width: 100%;
 
   margin-bottom: 20px;
+
+  text-align: left;
 }
 
 .form-group label {
@@ -1976,9 +2019,10 @@ body {
 
   margin-bottom: 8px;
 
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 
   font-size: 9px;
+  font-weight: 500;
 
   letter-spacing: 2px;
 
@@ -1986,11 +2030,14 @@ body {
 }
 
 .form-group input {
+  appearance: none;
+  -webkit-appearance: none;
+
   width: 100%;
 
   padding: 14px 14px;
 
-  border: 1px solid rgba(126,164,195,0.28);
+  border: 1px solid rgba(126, 164, 195, 0.28);
 
   border-radius: 9px;
 
@@ -1998,16 +2045,26 @@ body {
 
   color: #566c7f;
 
-  font-family: 'Cormorant Garamond', serif;
+  font-family: "Cormorant Garamond", serif;
 
   font-size: 17px;
 
   outline: none;
 }
 
+.form-group input::placeholder {
+  color: #a6b2bb;
+}
+
 .form-group input:focus {
   border-color: #9fbfd7;
+
+  box-shadow:
+    0 0 0 3px rgba(174, 205, 227, 0.14);
 }
+
+
+/* PAX */
 
 .pax-group {
   display: none;
@@ -2018,21 +2075,31 @@ body {
 }
 
 .pax-control {
-  display: grid;
+  width: 100%;
 
-  grid-template-columns: 46px 1fr 46px;
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;
 
   align-items: center;
 
-  border: 1px solid rgba(126,164,195,0.28);
+  border: 1px solid rgba(126, 164, 195, 0.28);
 
   border-radius: 9px;
 
   overflow: hidden;
+
+  background: #ffffff;
 }
 
 .pax-control button {
-  height: 46px;
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 48px;
+  height: 48px;
+
+  margin: 0;
+  padding: 0;
 
   border: 0;
 
@@ -2040,39 +2107,58 @@ body {
 
   color: #6b8ba5;
 
-  font-size: 22px;
+  font-family: "Montserrat", sans-serif;
+
+  font-size: 20px;
 
   cursor: pointer;
 }
 
 .pax-control span {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  font-family: 'Cormorant Garamond', serif;
+  min-height: 48px;
+
+  font-family: "Cormorant Garamond", serif;
 
   font-size: 22px;
 
   color: #5d788f;
 }
 
+
+/* SUBMIT */
+
 .rsvp-submit {
   width: 100%;
 
-  margin-top: 6px;
+  margin-top: 8px;
+
+  min-height: 52px;
 }
+
+
+/* SUCCESS */
 
 .rsvp-success {
   display: none;
 
-  margin-top: 26px;
+  width: 100%;
+
+  margin-top: 24px;
 
   padding: 24px 20px;
 
-  border: 1px solid rgba(126,164,195,0.22);
+  border: 1px solid rgba(126, 164, 195, 0.22);
 
   border-radius: 16px;
 
-  background: rgba(244,250,254,0.95);
+  background: rgba(244, 250, 254, 0.95);
+
+  box-shadow:
+    0 10px 30px rgba(80, 112, 137, 0.06);
 
   text-align: center;
 }
@@ -2082,20 +2168,56 @@ body {
 }
 
 .rsvp-success h3 {
-  font-family: 'Cormorant Garamond', serif;
+  margin: 0 0 8px;
+
+  font-family: "Cormorant Garamond", serif;
 
   font-size: 28px;
   font-weight: 500;
 
   color: #6788a2;
-
-  margin-bottom: 8px;
 }
 
 .rsvp-success p {
-  font-family: 'Cormorant Garamond', serif;
+  margin: 0;
+
+  font-family: "Cormorant Garamond", serif;
 
   font-size: 16px;
 
   color: #718391;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .rsvp-screen {
+    padding:
+      70px
+      20px
+      calc(125px + env(safe-area-inset-bottom));
+  }
+
+  .rsvp-title {
+    font-size: 24px;
+
+    max-width: 340px;
+  }
+
+  .rsvp-choice {
+    gap: 10px;
+  }
+
+  .rsvp-option {
+    min-height: 52px;
+
+    font-size: 9px;
+  }
+
+  .rsvp-form {
+    padding: 22px 18px;
+  }
+
 }
