@@ -1473,10 +1473,12 @@ body.invitation-locked {
 ================================================== */
 
 .bottom-nav {
-  position: fixed !important;
-  left: 50% !important;
-  bottom: calc(12px + env(safe-area-inset-bottom)) !important;
-  transform: translateX(-50%) !important;
+  background: #ffffff !important;
+  opacity: 1 !important;
+
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
 
   width: calc(100% - 28px) !important;
   max-width: 430px !important;
@@ -1486,8 +1488,6 @@ body.invitation-locked {
   align-items: center !important;
 
   padding: 8px 5px !important;
-
-  background: rgba(255, 255, 255, 0.92) !important;
 
   border: 1px solid rgba(126, 164, 195, 0.25) !important;
   border-radius: 18px !important;
