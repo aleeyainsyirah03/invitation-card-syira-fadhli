@@ -230,3 +230,103 @@ contactOverlay.addEventListener("click", (event) => {
   }
 
 });
+// =========================
+// RSVP UX
+// =========================
+
+const rsvpOptions =
+  document.querySelectorAll(".rsvp-option");
+
+const rsvpForm =
+  document.getElementById("rsvpForm");
+
+const paxGroup =
+  document.getElementById("paxGroup");
+
+const paxCount =
+  document.getElementById("paxCount");
+
+const minusPax =
+  document.getElementById("minusPax");
+
+const plusPax =
+  document.getElementById("plusPax");
+
+const rsvpSuccess =
+  document.getElementById("rsvpSuccess");
+
+let selectedStatus = "";
+let pax = 1;
+
+
+rsvpOptions.forEach(option => {
+
+  option.addEventListener("click", () => {
+
+    rsvpOptions.forEach(btn => {
+      btn.classList.remove("active");
+    });
+
+    option.classList.add("active");
+
+    selectedStatus =
+      option.dataset.status;
+
+    rsvpForm.classList.add("active");
+
+    rsvpSuccess.classList.remove("active");
+
+    if (selectedStatus === "hadir") {
+      paxGroup.classList.add("active");
+    } else {
+      paxGroup.classList.remove("active");
+    }
+
+  });
+
+});
+
+
+minusPax.addEventListener("click", () => {
+
+  if (pax > 1) {
+    pax--;
+    paxCount.textContent = pax;
+  }
+
+});
+
+
+plusPax.addEventListener("click", () => {
+
+  if (pax < 10) {
+    pax++;
+    paxCount.textContent = pax;
+  }
+
+});
+
+
+rsvpForm.addEventListener("submit", event => {
+
+  event.preventDefault();
+
+  const guestName =
+    document
+      .getElementById("guestName")
+      .value
+      .trim();
+
+  if (!selectedStatus) {
+    return;
+  }
+
+  if (!guestName) {
+    return;
+  }
+
+  rsvpForm.classList.remove("active");
+
+  rsvpSuccess.classList.add("active");
+
+});
