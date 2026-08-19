@@ -161,3 +161,29 @@ const revealObserver =
 revealElements.forEach((element) => {
   revealObserver.observe(element);
 });
+// =========================
+// BOTTOM NAV UX
+// =========================
+
+document.querySelectorAll('.bottom-nav a[href^="#"]').forEach(link => {
+
+  link.addEventListener("click", event => {
+
+    const targetId = link.getAttribute("href");
+
+    if (targetId === "#") return;
+
+    event.preventDefault();
+
+    const target = document.querySelector(targetId);
+
+    if (target) {
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+
+  });
+
+});
